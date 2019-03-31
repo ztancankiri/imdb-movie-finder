@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>IMDB Movie Finder</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    </head>
+    
+    <body>
+        <div class="container">
+            <fieldset>
+                <form action="/" method="post">
+                    <input name="movie" type="text" class="ghost-input" placeholder="Enter a movie" required>
+                    <input name="count" type="text" class="ghost-input" placeholder="Enter number of results" required>
+                    <input type="submit" class="ghost-button" value="Get Movie">
+                </form>
+                <% if(movies !== null) { %>
+                    <% for (let i = 0; i < movies.length; i++) { %>
+                        <section class="movie mtop15">
+                            <div class="left">
+                                <div class="poster">
+                                    <img src="<%= movies[i].poster %>">
+                                </div>
+                            </div>
+                            <div class="right">
+                                <div class="name">
+                                    <b><%= movies[i].name %> (<%= movies[i].year %>) [<%= movies[i].rating %>]</b>
+                                </div>
+                                <div class="genre mtop10">
+                                    <%= movies[i].genre %> 
+                                </div>
+                                <div class="duration">
+                                    <i><%= movies[i].duration %></i>
+                                </div>
+                                <div class="description mtop10">
+                                    <%= movies[i].description %> 
+                                </div>
+                                <div class="director mtop10">
+                                    <b>Directors: </b> <%= movies[i].directors %>
+                                </div>
+                                <div class="creator mtop5">
+                                    <b>Creators: </b> <%= movies[i].creators %>
+                                </div>
+                                <div class="stars mtop5">
+                                    <b>Stars: </b> <%= movies[i].stars %>
+                                </div>
+                            </div>
+                        </section>
+                    <% } %>
+                <% } %>
+            </fieldset>
+        </div>
+    </body>
+</html>
